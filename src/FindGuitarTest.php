@@ -13,7 +13,16 @@ class FindGuitarTest
 
         $guitar = $inventory->search($whatErinLikes);
 
-        return $guitar;
+        if($guitar) {
+            echo "Erin, you might like this guitar: \n" .
+                $guitar->getBuilder() . " " . $guitar->getModel() . " " .
+                $guitar->getType() . " guitar:\n   " .
+                $guitar->getBackWood() . " Back and sides, \n   ".
+                $guitar->getTopWood() . " Top \n you can have it for only $" . 
+                $guitar->getPrice() . "!\n ----------- \n";
+        } else {
+            echo "Sorry, Erin, we have nothing for you.";
+        }
     }
 
     private static function initializeInventory(Inventory $inventory) {

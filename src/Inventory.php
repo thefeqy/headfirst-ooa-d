@@ -22,38 +22,41 @@ class Inventory
         return null;
     }
 
-    public function search(Guitar $searchGuitar)
+    public function search(GuitarSpecs $searchGuitar): array
     {
+        $matchingGuitars = [];
         foreach ($this->guitars as $guitar) {
 
+            $guitarSpecs = $guitar->guitarSpecs;
+
             $builder = $searchGuitar->getBuilder();
-            if (! is_null($builder) && $builder != $guitar->getBuilder()) { // Builder
+            if (! is_null($builder) && $builder != $guitarSpecs->getBuilder()) { // Builder
                 continue;
             }
 
-            $model = $searchGuitar->getModel();
-            if (! is_null($model) && $model != $guitar->getModel()) { // Model
+            $model = strtolower($searchGuitar->getModel());
+            if (! is_null($model) && $model != strtolower($guitarSpecs->getModel())) { // Model
                 continue;
             }
 
             $type = $searchGuitar->getType();
-            if (! is_null($type) && $type != $guitar->getType()) { // Type
+            if (! is_null($type) && $type != $guitarSpecs->getType()) { // Type
                 continue;
             }
 
             $backWood = $searchGuitar->getBackWood();
-            if (! is_null($backWood) && $backWood != $guitar->getBackWood()) { // Back Wood
+            if (! is_null($backWood) && $backWood != $guitarSpecs->getBackWood()) { // Back Wood
                 continue;
             }
 
             $topWood = $searchGuitar->getTopWood();
-            if (! is_null($topWood) && $topWood != $guitar->getTopWood()) { // Top Wood
+            if (! is_null($topWood) && $topWood != $guitarSpecs->getTopWood()) { // Top Wood
                 continue;
             }
 
-            return $guitar;
+            $matchingGuitars[] = $guitar;
         }
 
-        return null;
+        return $matchingGuitars;
     }
 }

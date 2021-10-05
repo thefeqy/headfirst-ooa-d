@@ -6,4 +6,4 @@ use App\FindGuitarTest;
 
 $test = new FindGuitarTest();
 
-var_dump($test->find());
+$test->find();

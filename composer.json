@@ -1,0 +1,15 @@
+{
+    "name": "elfeqy/ooa-d",
+    "authors": [
+        {
+            "name": "osclancer",
+            "email": "osclancer@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    }
+}

@@ -4,21 +4,44 @@ namespace App;
 
 class GuitarSpecs
 {
-    public string $builder;
-    public string $model;
-    public string $type;
-    public string $backWood;
-    public string $topWood;
+    public string $builder, $model, $type, $backWood, $topWood;
+    public int $numStrings;
 
-    public function __construct(string $builder, string $model, string $type, string $backWood, string $topWood)
+    public function __construct(string $builder, string $model, string $type, int $numStrings, string $backWood, string $topWood)
     {
         $this->builder = $builder;
         $this->model = $model;
         $this->type = $type;
+        $this->numStrings = $numStrings;
         $this->backWood = $backWood;
         $this->topWood = $topWood;
     }
 
+
+    public function matches(GuitarSpecs $otherSpec): bool
+    {
+        if ($this->builder != $otherSpec->builder) { // Builder
+            return false;
+        }
+
+        if ($this->model != $otherSpec->model) { // model
+            return false;
+        }
+
+        if ($this->type != $otherSpec->type) { // type
+            return false;
+        }
+
+        if ($this->backWood != $otherSpec->backWood) { // backWood
+            return false;
+        }
+
+        if ($this->topWood != $otherSpec->topWood) { // topWood
+            return false;
+        }
+
+        return true;
+    }
     /**
      * Get the value of builder
      */
@@ -41,6 +64,14 @@ class GuitarSpecs
     public function getType()
     {
         return $this->type;
+    }
+
+    /**
+     * Get the value of numStrings
+     */ 
+    public function getNumStrings()
+    {
+        return $this->numStrings;
     }
 
     /**

@@ -6,14 +6,14 @@ class Guitar
 {
     public string $serialNumber;
     public float $price;
-    public GuitarSpecs $guitarSpecs;
+    public GuitarSpecs $spec;
 
 
-    public function __construct(string $serialNumber, float $price, string $builder, string $model, string $type, string $backWood, string $topWood)
+    public function __construct(string $serialNumber, float $price, GuitarSpecs $spec)
     {
         $this->serialNumber = $serialNumber;
         $this->price = $price;
-        $this->guitarSpecs = new GuitarSpecs($builder, $model, $type, $backWood, $topWood);
+        $this->spec = $spec;
     }
 
     /**
@@ -33,10 +33,10 @@ class Guitar
     }
 
     /**
-     * Get the value of guitarSpecs
+     * Get the value of spec
      */ 
-    public function getGuitarSpecs(): GuitarSpecs
+    public function getSpec()
     {
-        return $this->guitarSpecs;
+        return $this->spec;
     }
 }

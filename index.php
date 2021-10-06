@@ -2,7 +2,7 @@
 
 require('vendor/autoload.php');
 
-use App\FindGuitarTest;
+use App\ChapterOne\FindGuitarTest;
 
 $test = new FindGuitarTest();
 

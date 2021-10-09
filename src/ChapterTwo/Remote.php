@@ -13,11 +13,15 @@ class Remote
 
     public function pressButton(): void
     {
-        echo "Pressing the remote control button ...";
+        echo "Pressing the remote control button ... \n";
         if ($this->door->isOpen()) {
             $this->door->close();
         } else {
             $this->door->open();
+
+            sleep(5);
+
+            $this->door->close();
         }
     }
 }

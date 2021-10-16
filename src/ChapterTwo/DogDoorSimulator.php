@@ -16,10 +16,12 @@ class DogDoorSimulator
      */
     public function main(): void {
         $door = new DogDoor();
+        $recognizer = new BarkRecognizer($door);
         $remote = new Remote($door);
 
-        echo "Fido barks to go outside ... \n\n";
-        $remote->pressButton();
+        // Simulate the hardware hearing a bark.
+        echo "Fido starts barking.\n\n";
+        $recognizer->recognize('Woof');
 
         echo "\nFido has gone outside ... \n";
 
@@ -29,12 +31,11 @@ class DogDoorSimulator
         
         echo "... but he's stuck outside! \n";
 
-        echo "Fido starts barking ... \n";
-        echo "so Gina grabs the remote control.\n";
-        $remote->pressButton();
+        // Simulate the hardware hearing a bark again.
+        echo "Fido starts barking. \n";
+        $recognizer->recognize('Woof');
 
         echo "\nFido's back inside ... \n";
-
         $door->close();
     }
 }

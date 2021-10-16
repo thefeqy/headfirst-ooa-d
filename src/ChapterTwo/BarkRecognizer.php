@@ -13,7 +13,7 @@ class BarkRecognizer
 
     public function recognize(String $bark): void
     {
-        echo "Bark recognizer heared a '" . $bark . "'";
+        echo "Bark recognizer heared a '" . $bark . "' \n";
         $this->door->open();
     }
 }
